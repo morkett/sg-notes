@@ -118,6 +118,15 @@ for (var i = 0; i < truthyThings.length; i++) {
     }
 }
 
+
+
+
+
+
+///////////////////////////////////////
+// LOOPS
+/////////////////////////////////////
+
 var yourName = prompt('What is your name?');
 
 if (yourName) {
@@ -125,3 +134,29 @@ if (yourName) {
 } else {
     alert('Not sure what your name is!')
 }
+
+///////////////////////////////////////////
+// WHILE LOOPS
+///////////////////////////////////////////
+
+console.log('\n ------ Loops:');
+var question = 'Now using a while() loop...What is your name?';
+yourName = prompt(question)
+while (!yourName) {
+    alert('Not sure what your name is!');
+    yourName = prompt(question);
+}
+alert('Nice one, ' + yourName);
+
+
+///////////////////////////////////////////
+// DO / WHILE LOOP
+///////////////////////////////////////////
+
+do {
+    yourName = prompt('Now using a do/while() loop...What is your name?');
+    if (!yourName) {
+        alert('Not sure what your name is!');
+    }
+} while (!yourName);
+alert('Nice one, ' + yourName);
