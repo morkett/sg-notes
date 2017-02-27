@@ -100,3 +100,28 @@ if (dayOfWeek.toUpperCase() === 'FRIDAY' || dayOfWeek.toUpperCase() === 'THURSDA
 } else {
     console.log('Bummer :-(');
 }
+
+/////////////////////////////////////////////////
+//           truthy/falsey & arrays
+////////////////////////////////////////////////
+// null, undefined, 0, empty sting all classed as falsey
+
+console.log('--- truthy/falsey:');
+var truthyThings = [1, 0, 'something', '', -1];
+
+for (var i = 0; i < truthyThings.length; i++) {
+    console.log('  element', i, 'is: ', truthyThings[i]);
+    if (truthyThings[i]) {
+        console.log('----> true');
+    } else {
+        console.log('----> False');
+    }
+}
+
+var yourName = prompt('What is your name?');
+
+if (yourName) {
+    alert('Nice one, ' + yourName.charAt(0).toUpperCase() + yourName.slice(1));
+} else {
+    alert('Not sure what your name is!')
+}
