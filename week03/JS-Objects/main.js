@@ -38,14 +38,49 @@ for (var i = 0; i < people.length; i++) {
 }
 //SOLUTION
 
+
+
 //- write an `if()` statement to check to see if `{}` equals `{}`
 //- use `console.log()` to print an appropriate message for both conditions
 //- try with both types of comparison operators and see if there is a difference
 
 //SOLUTION
-if ({} === {}) {
+var a = {};
+if (a === {}) {
     console.log('Yeah they are equal!');
 } else {
     console.log('NOT! They are not equal!');
 }
 // NOT EQUAL BECAUSE {} in JS is a shortcut for newObject{};
+
+
+
+//CREATE A FUNCTION THAT CREATES AN OBJECT - NO NEED TO MANUALLY DO IT LIKE THE person1, person2 ABOVE
+console.log('\n--- Functions \n ');
+
+function createPerson(firstName, lastName, email, age) //orange are parameters
+{
+    var newPerson = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        age: age
+    };
+    return newPerson; //RETURN SENDS IT BACK OUT FOR GLOBAL SCOPE
+}
+
+var harald = createPerson('Harald', 'Kumar', 'h.kumar@example.com', 15);
+console.log('newPerson:', harald);
+
+
+
+//IS HARALD OLD ENOUGH TEST
+function isOldEnough(age) {
+    return (age >= 18);
+}
+
+if (isOldEnough(harald.age)) {
+    console.log('Come in');
+} else {
+    console.log('Come back when you are older');
+}
