@@ -1,31 +1,25 @@
 console.log(' in main.js \n\n "Objects, functions and Scope" \n ');
 
 
-//THIS IS AN ARRAY []
-var ages = [
-    24,
-    23,
-    29,
-    32
-];
+
 
 
 var person1 = {
-    firstName: 'Bob', //property
-    lastName: 'le Plant', //property
-    email: 'bob@spartaglobal.co', //property
-    age: 12.5 //property
+  firstName: 'Bob', //property
+  lastName: 'le Plant', //property
+  email: 'bob@spartaglobal.co', //property
+  age: 12.5 //property
 };
 var person2 = {
-    firstName: 'Aretha', //property
-    lastName: 'Franklin', //property
-    email: 'ms.legend@example.com', //property
-    age: 29 //property
+  firstName: 'Aretha', //property
+  lastName: 'Franklin', //property
+  email: 'ms.legend@example.com', //property
+  age: 29 //property
 };
 var person3 = {
-    firstName: 'Joe', //property
-    email: 4, //property
-    hobbies: ['boxing', 'hitting'] //property
+  firstName: 'Joe', //property
+  email: 4, //property
+  hobbies: ['boxing', 'hitting'] //property
 };
 
 var people = [person1, person2, person3];
@@ -35,7 +29,7 @@ var people = [person1, person2, person3];
 
 //SOLUTION
 for (var i = 0; i < people.length; i++) {
-    console.log(people[i].firstName, people[i].age); //comma between console commands creates space
+  console.log(people[i].firstName, people[i].age); //comma between console commands creates space
 }
 //SOLUTION
 
@@ -48,9 +42,9 @@ for (var i = 0; i < people.length; i++) {
 //SOLUTION
 var a = {};
 if (a === {}) {
-    console.log('Yeah they are equal!');
+  console.log('Yeah they are equal!');
 } else {
-    console.log('NOT! They are not equal!');
+  console.log('NOT! They are not equal!');
 }
 // NOT EQUAL BECAUSE {} in JS is a shortcut for newObject{};
 
@@ -61,19 +55,19 @@ console.log('\n--- Functions \n ');
 
 var capitalCity = 'London'; //GLOBAL VARIABLE CAN BE USED BY A LOCAL FUNCTION - BAD PRACTICE TO USE GLOBAL
 
-function createPerson(firstName, lastName, email, age) //orange are parameters
-{
-    var newPerson = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        age: age,
-        capitalCity: capitalCity,
-        fullName: function() {
-            return firstName + ' ' + lastName + ' from ' + capitalCity + '.'; //A METHOD IN AN OBJECT or FUNCTION
-        }
-    };
-    return newPerson; //RETURN SENDS IT BACK OUT FOR GLOBAL SCOPE
+//orange are parameters
+function createPerson(firstName, lastName, email, age){
+  var newPerson = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    age: age,
+    capitalCity: capitalCity,
+    fullName: function() {
+      return firstName + ' ' + lastName + ' from ' + capitalCity + '.'; //A METHOD IN AN OBJECT or FUNCTION
+    }
+  };
+  return newPerson; //RETURN SENDS IT BACK OUT FOR GLOBAL SCOPE
 }
 
 //HARALDs FULL NAME
@@ -90,22 +84,22 @@ people.push(david, asma, harald);
 
 //IS HARALD OLD ENOUGH TEST
 function isOldEnough(age) {
-    return (age >= 18);
+  return (age >= 18);
 }
 
 if (isOldEnough(harald.age)) {
-    console.log('Come in');
+  console.log('Come in');
 } else {
-    console.log('Come back when you are older');
+  console.log('Come back when you are older');
 }
 
 var oldEnoughComment;
 for (i = 0; i < people.length; i++) {
-    oldEnoughComment = (isOldEnough(people[i].age)) ?
+  oldEnoughComment = (isOldEnough(people[i].age)) ?
         'is old enough' :
         'is NOT old enough';
 
-    console.log(people[i].fullName(), oldEnoughComment);
+  console.log(people[i].fullName(), oldEnoughComment);
     //Ternary Operator - shorcut of the below
 
     // if (isOldEnough(people[i].age)) {
@@ -118,11 +112,11 @@ for (i = 0; i < people.length; i++) {
 console.log('--- OO Javascript:');
 
 function Circle(radius) {
-    this.radius = radius;
+  this.radius = radius;
     // one way to write an instance method
-    this.circumference = function() {
-        return 2 * Circle.PI * this.radius;
-    };
+  this.circumference = function() {
+    return 2 * Circle.PI * this.radius;
+  };
 }
 
 // static (or class) property/variable:
@@ -131,7 +125,7 @@ Circle.PI = 22 / 7;
 // another way to write an instance method:
 // add it to the prototype
 Circle.prototype.area = function() {
-    return Circle.PI * this.radius * this.radius;
+  return Circle.PI * this.radius * this.radius;
 };
 
 var coin = new Circle(1.2);
@@ -139,7 +133,7 @@ var plate = new Circle(7);
 var circles = [coin, plate];
 
 for (i = 0; i < circles.length; i++) {
-    console.log('Radius is:', circles[i].radius);
-    console.log('Circumference is:', circles[i].circumference());
-    console.log('Area is:', circles[i].area());
+  console.log('Radius is:', circles[i].radius);
+  console.log('Circumference is:', circles[i].circumference());
+  console.log('Area is:', circles[i].area());
 }
