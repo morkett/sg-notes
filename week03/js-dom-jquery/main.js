@@ -1,20 +1,5 @@
 console.log('executed: main.js \n ');
 
-//HTML as DOM
-
-/*
- html = {
-  head = {
-    meta: "property",
-    title: "property",
-    script: "property",
-  },
-  body = {
-    p: "property"
-  }
-}
-*/
-
 console.log(document);
 
 //Changing website title
@@ -22,14 +7,6 @@ document.getElementsByTagName('title')[0].innerHTML = 'Title Change';
 
 console.log('\n--- using querySelectorAll\n ');
 
-var selectedListItems = document.querySelectorAll('li.selected');
-
-console.log('selected:',selectedListItems);
-
-for(var i=0; i < selectedListItems.length; i++) {
-  console.log('selected list item style:  ',selectedListItems[i].style );
-  selectedListItems[i].style.color = 'red';
-}
 
 
 console.log('\n--- Create Element\n ');
@@ -37,8 +14,14 @@ console.log('\n--- Create Element\n ');
 //var element to create
 var newListItem = document.createElement('li');
 
+//Two Different methods to add class
+newListItem.className = 'selected';
+newListItem.setAttribute('class', 'selected');
+
 // var of what to add
 newListItem.innerHTML = 'in America';
+
+
 
 // we are going to call .appendChild on the parent <ul> Element
 //that <ul> element has an id attribute
@@ -52,3 +35,15 @@ newListItem.innerHTML = 'in America';
 var listContainer = document.getElementById('item-list');
 
 listContainer.appendChild(newListItem);
+
+
+
+//Change selected class color
+var selectedListItems = document.querySelectorAll('li.selected');
+
+// console.log('selected:',selectedListItems);
+
+for(var i=0; i < selectedListItems.length; i++) {
+  console.log('selected list item style:  ',selectedListItems[i].style );
+  selectedListItems[i].style.color = 'red';
+}
