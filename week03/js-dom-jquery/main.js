@@ -1,25 +1,27 @@
 console.log('executed: main.js \n ');
 
-console.log(document);
+document.addEventListener('DOMContentLoaded', function(){
+  //DOMContentLoaded = same as $(document).ready
+  console.log(document);
 
 //Changing website title
-document.getElementsByTagName('title')[0].innerHTML = 'Title Change';
+  document.getElementsByTagName('title')[0].innerHTML = 'Title Change';
 
-console.log('\n--- using querySelectorAll\n ');
+  console.log('\n--- using querySelectorAll\n ');
 
 
 
-console.log('\n--- Create Element\n ');
+  console.log('\n--- Create Element\n ');
 
 //var element to create
-var newListItem = document.createElement('li');
+  var newListItem = document.createElement('li');
 
 //Two Different methods to add class
-newListItem.className = 'selected';
-newListItem.setAttribute('class', 'selected');
+  newListItem.className = 'selected';
+  newListItem.setAttribute('class', 'selected');
 
 // var of what to add
-newListItem.innerHTML = 'in America';
+  newListItem.innerHTML = 'in America';
 
 
 
@@ -32,18 +34,37 @@ newListItem.innerHTML = 'in America';
 // .getElementById() method
 
 // listContainer finds the id of the <ul> element that contains the li
-var listContainer = document.getElementById('item-list');
+  var listContainer = document.getElementById('item-list');
 
-listContainer.appendChild(newListItem);
+  listContainer.appendChild(newListItem);
 
 
 
 //Change selected class color
-var selectedListItems = document.querySelectorAll('li.selected');
+  var selectedListItems = document.querySelectorAll('li.selected');
 
 
 
-for(var i=0; i < selectedListItems.length; i++) {
-  console.log('selected list item style:  ',selectedListItems[i].style );
-  selectedListItems[i].style.color = 'red';
-}
+  for(var i=0; i < selectedListItems.length; i++) {
+    console.log('selected list item style:  ',selectedListItems[i].style );
+    selectedListItems[i].style.color = 'red';
+  }
+
+
+  console.log('\n--- DOM EVENTS\n ');
+
+//add an eventlistener for listen for a click on the button
+
+  var pressMyButton = document.getElementById('pressMyBtn');
+
+  pressMyButton.addEventListener('click', function(){
+    pressMyButton.innerHTML ='You just clicked all over me!';
+
+    pressMyButton.setAttribute('class','color-change');
+
+  });
+
+
+
+
+});
