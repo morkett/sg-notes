@@ -41,7 +41,7 @@ listContainer.appendChild(newListItem);
 //Change selected class color
 var selectedListItems = document.querySelectorAll('li.selected');
 
-// console.log('selected:',selectedListItems);
+
 
 for(var i=0; i < selectedListItems.length; i++) {
   console.log('selected list item style:  ',selectedListItems[i].style );
