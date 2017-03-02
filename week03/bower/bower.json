@@ -1,0 +1,14 @@
+{
+  "name": "bower",
+  "homepage": "",
+  "authors": [
+    "morkett <dcorkett@spartaglobal.co>"
+  ],
+  "description": "seeing how bower works",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
