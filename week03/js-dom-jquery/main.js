@@ -1,7 +1,12 @@
 console.log('executed: main.js \n ');
 
+
 document.addEventListener('DOMContentLoaded', function(){
   //DOMContentLoaded = same as $(document).ready
+
+
+
+
   console.log(document);
 
 //Changing website title
@@ -64,7 +69,24 @@ document.addEventListener('DOMContentLoaded', function(){
 
   });
 
+});
 
 
+$(function(){
+  console.log('DOM LOADED: jQuery');
+  console.log('---using jQuery');
+
+  var listContainer = $('#item-list');
+  var listItems = $('#item-list li');
+
+  var newListItem = $('<li>new item appended by jQuery</li>').addClass('garish');
+  var newListItem2 = $('<li>new item prepended by jQuery</li>').addClass('dull');
+
+  listContainer.append(newListItem);
+  listContainer.prepend(newListItem2);
+
+  $('#pressMyBtn').click(function(){
+    alert('hello');
+  });
 
 });
