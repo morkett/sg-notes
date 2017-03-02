@@ -5,8 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BOWER</title>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js">
+  </script>
+  <script src="bower_components/material-design-lite/material.js" charset="utf-8"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="bower_components/material-design-lite/material.css">
 </head>
 <body>
+  <style media="screen">
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
+    /*div {
+      height: 800px;
+      width: 800px;
+      border-radius: 50%;
+      background-color: #FFF3E0;
+      display: flex;
+      justify-content: center;;
+      align-items: center;
+    }
+
+    button {
+      display: block;
+      left: 50%;
+    }*/
+  </style>
+  <div>
+  <!-- Colored FAB button with ripple -->
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+  <i class="material-icons">add</i>
+</button>
+<div>
 </body>
 </html>
