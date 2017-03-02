@@ -82,11 +82,11 @@ $(function(){
   var newListItem = $('<li>new item appended by jQuery</li>').addClass('garish');
   var newListItem2 = $('<li>new item prepended by jQuery</li>').addClass('dull');
 
-  listContainer.append(newListItem);
+
   listContainer.prepend(newListItem2);
 
   $('#pressMyBtn').click(function(){
-    alert('hello');
+    listContainer.append(newListItem);
   });
 
 });
