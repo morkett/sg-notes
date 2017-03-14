@@ -68,9 +68,7 @@ app.get('/users/:id', function(req, res) {
 
   res.status(200).send(html);
 });
-
 // Action: destroy
-
 app.delete('/users/:id', function(req, res) {
   var userId = req.params.id;
 
@@ -78,7 +76,7 @@ app.delete('/users/:id', function(req, res) {
   user = findUserById(userId);
 
   var findArrayPos = users.indexOf(user);
-
+  
   var doesNotExist = '<em>User with id ' + userId + ' does not exist' + '</em>';
   var deletedUser = req.params.id + ' has been deleted';
 
