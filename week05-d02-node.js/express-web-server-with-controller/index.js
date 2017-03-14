@@ -4,8 +4,9 @@ var bodyParser = require('body-parser');
 var app = express();
 var port = 3000;
 
+app.set('view engine', 'ejs');
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({extended: true})); //for parsing application 
+app.use(bodyParser.urlencoded({extended: true})); //for parsing application
 app.use(router);
 
 app.listen(port, function() {
