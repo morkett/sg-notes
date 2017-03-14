@@ -73,7 +73,6 @@ function userUpdate(req, res) {
   var userId = req.params.id;
   var userIndex = findUserIndexById(userId);
   var status;
-  var html = '<h1>Updating user with id'+ userId +'</h1>';
 
   if(userIndex !== -1) {
     var user = users[userIndex];
@@ -81,12 +80,11 @@ function userUpdate(req, res) {
     user.lastName = req.body.lastName;
     user.email = req.body.email;
     status = 200;
-    html+= '<p>User Updated</p>';
+
   } else {
-    html += '<em>Could not find user with id'+ userId + '</em>';
     status = 404;
   }
-  res.status(status).send(html);
+  res.status(status).send();
 }
 
 //Action: show
@@ -98,6 +96,7 @@ function userShow(req, res) {
   var status;
   var html = '<h1>Show user ' + userId + '</h1>';
 
+
   userIndex = findUserIndexById(userId);
 
   if (userIndex !== -1) {
@@ -108,10 +107,12 @@ function userShow(req, res) {
     html += '<p>Email: ' + user.email + '</p>';
   } else {
     status = 404;
-    html += '<em>User not found with id ' + userId + '</em>';
   }
 
-  res.status(status).send(html);
+  res.status(status).render('users/show',{
+    title: 'Show User ' + userId,
+    user: user
+  });
 }
 
 
