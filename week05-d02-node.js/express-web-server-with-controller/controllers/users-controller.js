@@ -13,10 +13,20 @@ var users = [
   }
 ];
 
+var currentUserId = 100;
+
 function findUserIndexById(userId) {
   return users.findIndex(function (user) {
     return user.id === userId;
   });
+}
+
+
+
+function getNextUserId() {
+  currentUserId++;
+
+  return currentUserId.toString();
 }
 
 // Action Index
@@ -38,7 +48,15 @@ function newUser(req, res) {
 
 //Action: Create
 function userCreate(req, res) {
-  res.status(200).send('<h1>Action: create</h1>');
+  var newUser = {
+    id: getNextUserId(),
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email
+  };
+
+  users.push(newUser);
+  res.status(200).send('<h1>Action: create new user with id' + getNextUserId()+'</h1>' );
 }
 
 //Action: Edit
@@ -48,7 +66,23 @@ function userEdit(req, res) {
 
 //Action: update
 function userUpdate(req, res) {
-  res.status(200).send('<h1>Action: update</h1>');
+  var userId = req.params.id;
+  var userIndex = findUserIndexById(userId);
+  var status;
+  var html = '<h1>Updating user with id'+ userId +'</h1>';
+
+  if(userIndex !== -1) {
+    user = users[userIndex];
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.email = req.body.email;
+    status = 200;
+    html+= '<p>User Updated</p>';
+  } else {
+    html += '<em>Could not find user with id'+ userId + '</em>';
+    status = 404;
+  }
+  res.status(status).send(html);
 }
 
 //Action: show
