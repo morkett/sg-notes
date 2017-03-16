@@ -2,8 +2,8 @@
   <p>First name: <%= user.firstName %></p>
   <p>Last name: <%= user.lastName %></p>
   <p>Email: <%= user.email %></p>
-  <form method='post' action="/users/<%= user.id %>">
-  <input type='hidden' name='_method' value='delete'>
+  <form method="post" action="/users/<%= user.id %>">
+    <input type="hidden" name="_method" value="delete">
     <button>Delete</button>
     <a href="/users/<%= user.id %>/edit">Edit</a>
   </form>
