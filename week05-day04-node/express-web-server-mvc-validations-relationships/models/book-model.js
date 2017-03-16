@@ -1,17 +1,15 @@
 var mongoose = require('mongoose');
 
-var User = mongoose.model('User', {
-  firstName: {
+var Book = mongoose.model('Book', {
+  title: {
     type: String,
     required: true
   },
-  lastName: String,
-  email: {
+  author: {
     type: String,
     required: true
   }
 });
 
 
-
-module.exports = User;
+module.exports = Book;
