@@ -81,9 +81,7 @@ function updateUser(req, res) {
     if (err) {
       console.log('Could not get existing user to update:', err.message);
       // ditto comment above re. keeping complexity to a minimum:
-      req.flash('error', err.message);
-      res.redirect('/users');
-      // res.status(404).send('Could not get existing user to update');
+      res.status(404).send('Could not get existing user to update');
       return;
     }
     res.redirect('/users');

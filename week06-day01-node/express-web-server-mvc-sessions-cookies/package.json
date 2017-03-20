@@ -15,7 +15,6 @@
     "express": "^4.15.2",
     "express-ejs-layouts": "^2.2.0",
     "express-session": "^1.15.1",
-    "flash": "^1.1.0",
     "method-override": "^2.3.7",
     "mongoose": "^4.9.0"
   },
