@@ -3,12 +3,20 @@ var router = express.Router();
 var usersController = require('../controllers/users-controller');
 var booksController = require('../controllers/books-controller');
 
+///////////////////
+// home page
+///////////////////
 
 router.get('/', function (req, res) {
   res.render('index', {
     title: 'Home'
   });
 });
+
+//////////////////////////////////////////////////////
+////                 USERS
+/////////////////////////////////////////////////////
+
 router.route('/users')
   .get(usersController.index)
   .post(usersController.create);
@@ -20,6 +28,10 @@ router.route('/users/:id')
   .put(usersController.update)
   .get(usersController.show)
   .delete(usersController.destroy);
+
+//////////////////////////////////////////////////////
+////                 BOOKS
+/////////////////////////////////////////////////////
 
 router.route('/books')
         .post(booksController.create);

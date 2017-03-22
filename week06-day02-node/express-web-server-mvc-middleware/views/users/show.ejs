@@ -14,6 +14,9 @@
         <%= user.books[i].title %> <em>by <%= user.books[i].author %></em>
         <form method="post" action="/books/<%= user.books[i].id %>">
           <input type="hidden" name="_method" value="delete">
+
+          <!--//ADDED HIDDEN INPUT TO SEND USER ID WITH FORM-->
+          <input type="hidden" name="userId" value="<%= user.id %>">
           <button>Delete</button>
           <a href="/books/<%= user.books[i].id %>/edit">Edit</a>
         </form>

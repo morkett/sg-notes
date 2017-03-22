@@ -3,7 +3,7 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var app = require('../index');
-var expect = chai.expect;
+// var expect = chai.expect;
 var request;
 
 chai.should();
@@ -59,6 +59,8 @@ describe('Books', function () {
               res.should.have.status(200);
               request
                 .delete('/books/' + bookId)
+                // sending hidden input field
+                .send({userId: userId})
                 .end(function (err, res) {
                   res.should.have.status(200);
                   done();

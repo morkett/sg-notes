@@ -1,7 +1,5 @@
 var Book = require('../models/book-model');
 
-require('../models/user-model');
-
 // Action: new
 function newBook(req, res) {
   res.render('users/newBook', {
@@ -54,14 +52,14 @@ function editBook(req, res) {
 
 // Action: update
 function updateBook(req, res) {
-  var userId = req.params.id;
-  var updatedUser = {
+  var bookId = req.params.id;
+  var updatedBook = {
     title: req.body.title,
     author: req.body.author
 
   };
 
-  Book.findOneAndUpdate({ _id: userId }, updatedUser, function (err) {
+  Book.findOneAndUpdate({ _id: bookId }, updatedBook, function (err) {
     if (err) {
       console.log('Could not get existing user to update:', err.message);
       // ditto comment above re. keeping complexity to a minimum:
@@ -75,16 +73,18 @@ function updateBook(req, res) {
 
 // Action: destroy
 function destroyBook(req, res) {
-  var userId = req.params.id;
+  //
+  var bookId = req.params.id;
 
-  Book.deleteOne({ _id: userId }, function (err) {
+  Book.deleteOne({ _id: bookId }, function (err) {
     if (err) {
       console.log('Could not get book to delete:', err.message);
       // ditto comment above re. keeping complexity to a minimum:
       res.status(404).send('Could not get book to delete');
       return;
     }
-    res.redirect('/users');
+    // req.body.userId redirects to users page
+    res.redirect('/users/' + req.body.userId);
   });
 }
 
@@ -95,6 +95,3 @@ module.exports = {
   update: updateBook,
   destroy: destroyBook
 };
-
-
-//
