@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var usersController = require('../controllers/users-controller');
+var booksController = require('../controllers/books-controller');
+
 
 router.get('/', function (req, res) {
   res.render('index', {
@@ -18,5 +20,17 @@ router.route('/users/:id')
   .put(usersController.update)
   .get(usersController.show)
   .delete(usersController.destroy);
+
+router.route('/books')
+        .post(booksController.create);
+
+router.route('/books/:id')
+    .put(booksController.update)
+    .delete(booksController.destroy);
+
+
+
+router.get('/books/newBook', booksController.new);
+router.get('/books/:id/edit', booksController.edit);
 
 module.exports = router;
