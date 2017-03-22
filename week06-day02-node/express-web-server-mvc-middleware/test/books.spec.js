@@ -62,7 +62,9 @@ describe('Books', function () {
                 // sending hidden input field
                 .send({userId: userId})
                 .end(function (err, res) {
+                  var bookIdRegExp = new RegExp(bookId);
                   res.should.have.status(200);
+                  res.text.should.not.match(bookIdRegExp);
                   done();
                 });
 
