@@ -1,4 +1,5 @@
 $(function(){
+  var jokeURL = 'http://api.icndb.com/jokes/random';
   console.log('Page Is Loaded Bruv...');
 //////////////////////////////////////////////////
  ///// MANUAL WAY
@@ -7,14 +8,13 @@ $(function(){
   function ajaxTheManualWay() {
     var request = new XMLHttpRequest();
 
-    request.open('GET', 'http://api.icndb.com/jokes/random');
+    request.open('GET', jokeURL);
   //add event listener to see when it is loaded
     request.addEventListener('load', function () {
       var json = JSON.parse(this.responseText);
       var jokeElement = document.getElementById('joke');
       jokeElement.innerHTML = json.value.joke;
-      console.log('json:', json);
-      console.log('json.value.joke',json.value.joke);
+      console.log('manual way');
     });
     request.send();
   }
@@ -24,9 +24,9 @@ $(function(){
 //////////////////////////////////////////////////
 
   function ajaxTheJQueryWay(){
-    $.get('http://api.icndb.com/jokes/random', function (data){
-      console.log(data);
+    $.get(jokeURL, function (data){
       $('#joke').html(data.value.joke);
+      console.log('jQuery');
     });
   }
 
