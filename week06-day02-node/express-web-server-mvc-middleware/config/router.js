@@ -42,7 +42,7 @@ router.route('/books/:id')
 
 
 
-router.get('/books/newBook', booksController.new);
+router.get('/books/new', booksController.new);
 router.get('/books/:id/edit', booksController.edit);
 
 module.exports = router;

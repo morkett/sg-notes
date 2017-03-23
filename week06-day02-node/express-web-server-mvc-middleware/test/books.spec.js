@@ -3,9 +3,9 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var app = require('../index');
-// var expect = chai.expect;
-var request;
 var TestUtils = require('./test-utils');
+var expect = chai.expect;
+var request;
 
 chai.should();
 chai.use(chaiHttp);
@@ -15,41 +15,95 @@ describe('Books', function () {
     request = chai.request(app);
   });
 
-//  UPDATE
-  describe('PUT', function () {
-    it('should return error for non-existent book id', function (done) {
+  describe('POST', function () {
+    it.only('should return error when title is blank', function (done) {
       request
-       .put('/books/non-existent-book-id')
-       .end(function (err, res) {
-         res.should.have.status(404);
-         done();
-       });
+        .post('/books')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({ title: '', author: 'Dicky' })
+        .end(function (err, res) {
+          var jsonResponse = JSON.parse(res.text);
+
+          res.should.have.status(400);
+          expect(jsonResponse).to.be.an('array');
+          expect(jsonResponse.length).to.equal(1);
+          expect(jsonResponse[0].path).to.equal('title');
+          done();
+        });
     });
-    it('should return correct result for existing book', function (done) {
+    it.only('should return error author is blank', function (done) {
       request
-     .get('/users')
-     .end(function (err, res) {
-       var userId = TestUtils.getFirstUserIdFromUserListHTML(res.text);
+        .post('/books')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({ title: 'Great Expectations', author: '' })        .end(function (err, res) {
+          var jsonResponse = JSON.parse(res.text);
 
-       request
-         .get('/users/' + userId)
-         .end(function (err, res) {
-           var bookId = TestUtils.getFirstBookIdFromUserPageHTML(res.text);
+          res.should.have.status(400);
+          expect(jsonResponse).to.be.an('array');
+          expect(jsonResponse.length).to.equal(1);
+          expect(jsonResponse[0].path).to.equal('author');
+          done();
+        });
+    });
+    it.only('should create new book when input data is valid', function (done) {
+      var testFirstName = TestUtils.generateUniqueString('great');
 
-           request
-           .put('/books/' + bookId)
-           .set('Content-Type', 'application/x-www-form-urlencoded')
-           .send({ userId: userId, title: 'testTitle', author: 'testAuthor' })
-           .end(function (err, res) {
-             res.should.have.status(200);
-             res.text.should.match(/testTitle/);
-             res.text.should.match(/testAuthor/);
-             done();
-           });
-         });
-     });
+      request
+        .post('/books/newBook')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({ title: testFirstName, author: 'dickens' })
+        .end(function (err, res) {
+          var firstNameRegExp = new RegExp(testFirstName);
+
+          res.should.have.status(200);
+          res.text.should.match(firstNameRegExp);
+          done();
+        });
     });
   });
+
+  describe('PUT', function () {
+    it('should return error for non-existent book', function (done) {
+      request
+        .put('/books/non-existent-book-id')
+        .end(function (err, res) {
+          res.should.have.status(404);
+          done();
+        });
+    });
+    it('should return correct result for existing book', function (done) {
+
+      request
+        .get('/users')
+        .end(function (err, res) {
+          var userId = TestUtils.getFirstUserIdFromUserListHTML(res.text);
+
+          request
+              .get('/users/' + userId)
+              .end(function (err, res) {
+                var bookId = TestUtils.getFirstBookIdFromUserPageHTML(res.text);
+                var testTitle = TestUtils.generateUniqueString('title');
+                var testAuthor = TestUtils.generateUniqueString('author');
+
+                request
+                  .put('/books/' + bookId)
+                  .set('Content-Type', 'application/x-www-form-urlencoded')
+                  .send({ title: testTitle, author: testAuthor, userId: userId})
+                  .end(function (err, res) {
+                    var titleRegExp = new RegExp(testTitle);
+                    var authorRegExp = new RegExp(testAuthor);
+                    res.should.have.status(200);
+                    console.log('res.text:', res.text);
+                    res.text.should.match(titleRegExp);
+                    res.text.should.match(authorRegExp);
+                    done();
+                  });
+              });
+        });
+    });
+  });
+
+
 
   describe('DELETE', function () {
     it('should return error for non-existent book id', function (done) {
@@ -69,20 +123,18 @@ describe('Books', function () {
           request
             .get('/users/' + userId)
             .end(function (err, res) {
-              var bookId =  TestUtils.getFirstBookIdFromUserPageHTML(res.text);
+              var bookId = TestUtils.getFirstBookIdFromUserPageHTML(res.text);
 
-              res.should.have.status(200);
               request
                 .delete('/books/' + bookId)
-                // sending hidden input field
-                .send({userId: userId})
+                .send({ userId: userId})
                 .end(function (err, res) {
                   var bookIdRegExp = new RegExp(bookId);
+
                   res.should.have.status(200);
                   res.text.should.not.match(bookIdRegExp);
                   done();
                 });
-
             });
         });
     });
