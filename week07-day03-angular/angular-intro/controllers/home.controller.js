@@ -28,10 +28,28 @@ function HomeController() {
     if(!canShowGonzo) {
       className = 'isNotVisible';
     } else {
-      className = 'isVisible'
+      className = 'isVisible';
     }
     return className;
   };
+
+  //Edit Trainer
+  controller.editTrainerName = function(index) {
+    var value = document.getElementById(index).value;
+    controller.trainers.splice(index,1,value);
+    console.log(value);
+  };
+
+//Delete Single Trainer
+  controller.deleteOneTrainer = function (index){
+    controller.trainers.splice(index, 1);
+  };
+
+  //delete all trainers
+  controller.deleteAllTrainers = function() {
+    controller.trainers = [];
+  };
+
 
 //controller to add a trainer to the li from the form
   controller.addTrainer = function() {

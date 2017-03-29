@@ -15,7 +15,7 @@
       color: green;
     }
     .isNotVisible {
-      color: lightGray;
+      color: transparent;
     }
   </style>
 </head>
@@ -32,9 +32,16 @@
     - add track by $index to allow dublicate names to be entered
     // ng-repeat is added to an `li` not `ul`
     -->
-      <li ng-repeat="trainer in home.trainers track by $index">{{ trainer }}</li>
+      <li ng-repeat="trainer in home.trainers track by $index">
+        {{ trainer }}
 
+      <input type="text" ng-value="trainer" id="{{$index}}">
+
+      <button type="button" ng-click="home.editTrainerName($index)">Save Name</button>
+      <button type="button" ng-click="home.deleteOneTrainer($index)">Delete Trainer</button>
+      </li>
     </ul>
+    <button type="button" ng-click="home.deleteAllTrainers()">Clear Trainer List</button>
     <!-- //Create A Form For New Trainer  -->
     <!-- ng-model finds something in the input into the model -->
   <h2>Add a Trainer</h2>
