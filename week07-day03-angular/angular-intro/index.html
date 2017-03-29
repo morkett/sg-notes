@@ -5,25 +5,61 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Angular Intro</title>
+  <!-- //firstly have to load angular -->
   <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+  <!-- second one creates application -->
   <script src="app.js" charset="utf-8"></script>
+  <script src="controllers/home.controller.js" charset="utf-8"></script>
+  <style>
+    .isVisible {
+      color: green;
+    }
+    .isNotVisible {
+      color: lightGray;
+    }
+  </style>
 </head>
-<body>
-  <h1>Angular FTW</h1>
+<!-- Angular knows this controller is called this from the home-controller.js
+// `as home` refers to that controller  -->
+<body ng-controller="HomeController as home">
+  <h1>{{ home.title }}</h1>
 
-  <!-- ANYTHING IN CURLY BRACKETS - IS HANDLED BY ANGULAR -->
-  <div>
-    Here is a sum: <strong>{{ 4 + 5 }}</strong>
-  </div>
+  <p>Trainers:</p>
+    <ul>
+      <!-- // creates loop through trainers array
+      // trainer = any variable
+      // home.trainers refers to home on body tag and trainers in home.controllers.js
+    - add track by $index to allow dublicate names to be entered
+    // ng-repeat is added to an `li` not `ul`
+    -->
+      <li ng-repeat="trainer in home.trainers track by $index">{{ trainer }}</li>
 
-  <div>
-    Is 8 odd? <strong>{{ (8 % 2 === 1) ? 'Yes!' : 'Nope!' }}</strong>
-  </div>
+    </ul>
+    <!-- //Create A Form For New Trainer  -->
+    <!-- ng-model finds something in the input into the model -->
+  <h2>Add a Trainer</h2>
+  <form>
+    <input type="text" ng-model="home.newTrainerName">
+    <button type="button" ng-click="home.addTrainer()">Add</button>
+  </form>
 
-  <div>
-    Is 7 odd? <strong>{{ (7 % 2 === 1) ? 'Yes!' : 'Nope!' }}</strong>
-  </div>
+    <p>
+      <!-- // ng-click changes something on the controller. in this case it changes canShowGonzo to TRUE -->
+      <!-- <a href="#" ng-click="home.canShowGonzo = true">Show me Gonzo!</a> -->
 
+      <a href="#" ng-click="home.showGonzo($event)">Show me Gonzo!</a>
+      <a href="#" ng-click="home.hideGonzo()">Hide Gonzo!</a>
+      <a href="#" ng-click="home.toggleGonzo()">Toggle Gonzo!</a>
+      <!-- // NG CLASS you pass in an object if something is true eg ng-class="className": ifThisHappens -->
+      <span ng-class="home.getGonzoVisibilityClass()">'Gonzo is Visible'</span>
+    </p>
+    <!-- //canShowGonzo in home-controller.js ng-if doesnt even put it in the DOM but ng-show hides it but puts it in the DOM-->
+    <img
+     src="http://vignette1.wikia.nocookie.net/muppet/images/3/31/Gonzo-TheVoice-2012.jpg/revision/latest?cb=20121208171306"
+    height="200" ng-if="home.isGonzoVisibile()"
+    ng-mouseover="home.hideGonzo()"
+    />
+    <!-- everytime you mouse over Gonzo Dissappears -->
 
 </body>
 </html>
