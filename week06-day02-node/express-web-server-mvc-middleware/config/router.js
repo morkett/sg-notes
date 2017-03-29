@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 ////                 USERS
 /////////////////////////////////////////////////////
 
-router.route('/users')
+router.route('/')
   .get(usersController.index)
   .post(usersController.create);
 
