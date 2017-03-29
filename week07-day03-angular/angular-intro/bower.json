@@ -1,0 +1,20 @@
+{
+  "name": "angular-intro",
+  "homepage": "https://github.com/morkett/sg-notes",
+  "authors": [
+    "morkett <dcorkett@spartaglobal.co>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3"
+  }
+}
