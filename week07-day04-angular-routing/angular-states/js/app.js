@@ -9,6 +9,14 @@ function mainRouter($stateProvider, $urlRouterProvider){
   .state('home', {
     url: '/',
     templateUrl: '../states/home.html'
+  })
+  .state('about',{
+    url: '/about',
+    templateUrl: '../states/about.html'
+  })
+  .state('contact',{
+    url: '/contact',
+    templateUrl: '../states/contact.html'
   });
 
 //part of url router - that adds '/' if there is no other url added - home state is set to '/'
