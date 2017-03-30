@@ -1,5 +1,5 @@
 console.log('home.controller.js');
-// dont put logic in the HTML, make a function to do it in controllersso it is testable
+// dont put logic in the HTML, make a function to do it in controllers so it is testable
 function HomeController() {
   var controller = this;
   var canShowGonzo = false;
@@ -35,9 +35,21 @@ function HomeController() {
 
   //Edit Trainer
   controller.editTrainerName = function(index) {
-    var value = document.getElementById(index).value;
-    controller.trainers.splice(index,1,value);
-    console.log(value);
+    var value = controller.updatedTrainerNames[index];
+    //v1 naughty solution - dont access DOM
+    // var value = document.getElementById(index).value;
+
+    // controller.trainers.splice(index,1,value);
+    // console.log(value);
+
+    //v2 - used splice
+    //with ng-model
+    // controller.trainers.splice(index,1,value);
+
+    //v3 best solution
+    if(value) {
+      controller.trainers[index] = value;
+    }
   };
 
 //Delete Single Trainer
@@ -50,12 +62,21 @@ function HomeController() {
     controller.trainers = [];
   };
 
+  //Display Clear User Button
+  controller.canDisplayClearTrainerList = function(){
+    return controller.trainers.length > 0;
+  };
+
 
 //controller to add a trainer to the li from the form
   controller.addTrainer = function() {
     console.log('addTrainer: controller.newTrainerName ', controller.newTrainerName);
     controller.trainers.push(  controller.newTrainerName);
     controller.newTrainerName= '';
+  };
+
+  controller.isAddButtonDisabled = function() {
+    return !controller.newTrainerName;
   };
 
   function init() {
@@ -69,7 +90,7 @@ function HomeController() {
   init();
 }
 
-// create this controller and use in thr app 'myFirstApp'
+// create this controller and use in the app 'myFirstApp'
 angular
   //module says I want the below controller to use in 'myFirstApp' - this controller is going to be part of this angular application
  .module('myFirstApp', [])
