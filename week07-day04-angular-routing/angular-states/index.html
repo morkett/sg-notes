@@ -17,7 +17,12 @@
   <title>Angular States</title>
 </head>
 <body>
-
+  <nav>
+    <!-- //WITH ANGULAR UI ROUTER WE SPECIFY A STATE TO GO TO NOT A URL -->
+    <a ui-sref="home">home</a>
+    <a ui-sref="about">about</a>
+    <a ui-sref="contact">contact</a>
+  </nav>
   <h1>Angular States</h1>
 <!-- //Tell angular where to insert that view with `ui-view` !!!IMPORTANT!!!!-->
     <section ui-view>
