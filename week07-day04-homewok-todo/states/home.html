@@ -1,0 +1,60 @@
+<section>
+
+  <h2>{{home.title}}</h2>
+  <button ng-click="home.showEditForm()">{{home.editTitle}}</button>
+  <div>
+    <ul>
+      <li ng-repeat="todo in home.todos track by $index" ng-class="{{home.todo[$index]}}home.complete()">
+        <strong>{{$index + 1}}:</strong> {{todo}}
+
+
+      <input
+        type="text"
+        ng-value="todos"
+        placeholder="edit TODOS"
+        ng-model="home.updatedTodosField[$index]"
+        ng-if="home.isEditFormVisible()">
+      <button type="button" ng-click="home.updateTodos"
+      ng-if="home.isEditFormVisible()"
+      >Update</button>
+<!-- // ng-click="home.isComplete()" in input -->
+      <input type="checkbox" class="checkBox"></input>
+      <button type="button" ng-click="home.deleteTodos($index)"> - X</button>
+    </li>
+
+    </ul>
+
+    <div class="newTodoForm">
+    <a  class="newToDoPlus" ng-click="home.showNewForm()">+ <span>New List Item</span></a>
+    <form ng-if="home.isNewFormVisible()">
+      <input type="text" ng-model="home.newTodos">
+      <button type="submit" ng-click="home.addNewTodos(); home.showNewForm()">  Add New Todo   </button>
+    </form>
+    </div>
+
+
+  </div>
+
+
+
+
+  <!-- <div ng-controller="FirstCtrl">
+    <input type="text" ng-model="Aplha.Field">
+    First {{Alpha.Field}}
+  </div>
+
+  <div ng-controller="SecondCtrl">
+    <input type="text" ng-model="Beta.Feild">
+    Second {{Beta.Field}}
+  </div> -->
+
+  <!-- <h4>{{home.addTitle}}</h4>
+
+  <form>
+    TODOS: <input type="text" ng-model="home.newTodos">
+  </form>
+  <button type="submit" ng-click="home.addNewTodos()">
+    Submit
+  </button> -->
+
+</section>

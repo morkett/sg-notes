@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="miniProject">
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="/angular/angular.js"></script>
+  <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/home.controller.js"></script>
+  <script src="js/controllers/cats.controller.js"></script>
+  <script src="js/controllers/trucks.controller.js"></script>
+  <script src="js/controllers/frisbee.controller.js"></script>
+
+
+
+
+  <title>Simon Smith</title>
+</head>
+<body>
+  <nav>
+    <a ui-sref="home">home</a>
+    <a ui-sref="cats">cats</a>
+    <a ui-sref="frisbee">frisbee</a>
+    <a ui-sref="trucks">trucks</a>
+  </nav>
+  <h1>I Am Simon Smith</h1>
+    <section ui-view>
+
+    </section>
+</body>
+</html>

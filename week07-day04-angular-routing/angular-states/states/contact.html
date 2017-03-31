@@ -1,6 +1,6 @@
-<section ng-controller="HomeController as home2">
+<section ng-controller="ContactController as contact">
   <h1>Contact Page</h1>
-  <p>
-    o dear
+  <p ng-repeat="(key, value) in contact.details">
+    <strong>{{key}}</strong> {{value}}
   </p>
 </section>

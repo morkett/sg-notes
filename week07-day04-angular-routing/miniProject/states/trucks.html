@@ -1,0 +1,8 @@
+<section ng-controller="TrucksController as trucks">
+  <div class="container">
+    <h2>EXTREME FRISBEE!!!</h2>
+    <img ng-src="{{trucks.images[$index]}}"
+    ng-repeat="trucksPic in trucks.images track by $index"/>
+
+  </div>
+</section>

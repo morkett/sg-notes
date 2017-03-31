@@ -1,0 +1,8 @@
+<section ng-controller="FrisbeeController as frisbee">
+  <div class="container">
+    <h2>EXTREME FRISBEE!!!</h2>
+    <img ng-src='{{frisbee.images[$index]}}'
+    ng-repeat="frispic in frisbee.images track by $index"/>
+
+  </div>
+</section>
