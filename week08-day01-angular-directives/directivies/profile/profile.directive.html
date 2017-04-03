@@ -1,0 +1,8 @@
+<div class="profile">
+  <!-- //name and level are from the html attributes in profile - whic are set in the profile.directives.js -->
+    <h3>{{ person.name }} - <em>Level: {{ person.level }}</em> - <em>{{ person.gender }}</em></h3>
+
+    <ul>
+      <li ng-repeat="skill in person.skills">{{ skill }}</li>
+    </ul>
+</div>

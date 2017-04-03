@@ -1,6 +1,6 @@
 angular
   .module('angularDirectives')
-  .controller('mainController', mainController)
+  .controller('mainController', mainController);
 
 function mainController () {
   var controller = this;
@@ -8,31 +8,31 @@ function mainController () {
   controller.people = [
     {
       name: 'Niall',
-      age: 37,
+      level: 37,
       gender: 'male',
       position: 'Instructor',
       skills: ['eating', 'being awesome', 'sleeping']
     },
     {
       name: 'Matt',
-      age: 21,
+      level: 21,
       gender: 'male',
       position: 'Instructor',
       skills: ['Extreme Ping Pong', 'Angular']
     },
     {
       name: 'Lexie',
-      age: 21,
+      level: 21,
       gender: 'female',
-      position: 'Academy Manager',
-      skills: ['keeping the wheel spinning', 'life', 'knitting', 'danceing']
+      position: 'Academy Manlevelr',
+      skills: ['keeping the wheel spinning', 'life', 'knitting', 'dancing']
     },
     {
       name: 'Steve',
-      age: 6,
+      level: 6,
       gender: 'male',
       position: 'Instructor/Education Author',
       skills: ['Banter', 'life', 'keeping people motivated']
     }
-  ]
+  ];
 }
