@@ -15,7 +15,7 @@ function mainController () {
     },
     {
       name: 'Matt',
-      level: 21,
+      level: 99,
       gender: 'male',
       position: 'Instructor',
       skills: ['Extreme Ping Pong', 'Angular']

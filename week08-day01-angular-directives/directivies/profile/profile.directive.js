@@ -11,6 +11,13 @@ angular
       //Names of the attributes you pass in, and the variable that will be available in the index.html +  profile.directive.html
       scope: {
         person: '='
+      },
+      link: function(scope /*, element, attrs*/) {
+        scope.showSkills = false;
+
+        scope.toggleSkills = function() {
+          scope.showSkills = !scope.showSkills;
+        };
       }
     };
   });
