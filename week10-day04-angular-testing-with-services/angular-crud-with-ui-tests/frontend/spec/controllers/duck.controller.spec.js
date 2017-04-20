@@ -1,22 +1,45 @@
-console.log('in ducks specController');
 describe('DuckController', () => {
-
   let controllerToTest;
   let httpBackend;
+  let mock$State;
+  let mock$StateParams;
+  let testDuckId;
+  let API_URL;
 
   beforeEach(() => {
     module('DuckApp');
-
-    inject(($controller, $httpBackend) => {
-      controllerToTest = $controller('DuckController');
+    inject(($controller, $httpBackend, _API_URL_) => {
+      console.log('API_URL', API_URL);
+      // creating an instance using the controllerToTest
+      API_URL = _API_URL_;
       httpBackend = $httpBackend;
-      console.log('httpBackend', httpBackend);
+
+      mock$State = {
+        go: jasmine.createSpy()
+      };
+      mock$StateParams = {
+        duckId: testDuckId
+      };
+      controllerToTest = $controller('DuckController', {
+        $stateParams: mock$StateParams,
+        $state: mock$State
+      });
     });
   });
 
   describe('initialisation', () => {
-    it('should do a basic test', () => {
-      expect(1+1).toEqual(2);
+    it('should populate allDucks with corect data', () => {
+      const testDucks = ['duck one', 'duck two'];
+
+      httpBackend
+        .expect('GET', `${API_URL}/ducks`)
+        .respond(testDucks);
+      httpBackend.flush();
+      expect(controllerToTest.allDucks).toEqual(testDucks);
+      httpBackend.verifyNoOutstandingExpectation();
     });
   });
+
+
+
 });
