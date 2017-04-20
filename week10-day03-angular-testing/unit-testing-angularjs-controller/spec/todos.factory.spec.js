@@ -17,7 +17,7 @@ describe('TodosFactory', () => {
   });
 
   describe('add', () => {
-    it('should add new todo item to list array', () => {
+    it('should add new todo item to end of array', () => {
       const newTodoItem = 'newTodoItem';
       factoryToTest.add(newTodoItem);
 
@@ -28,9 +28,8 @@ describe('TodosFactory', () => {
 
   describe('clear', () => {
     it('should clear all items from list array', () => {
-      // console.log('factory ARRAY BEFORE', factoryToTest.list);
-      // factoryToTest.list = [];
-      // factoryToTest.list.splice(0);
+      factoryToTest.list.push('newTodo1, newTodo2');
+      // console.log(factoryToTest.list);
       factoryToTest.clear();
       expect(factoryToTest.list.length).toEqual(0);
       // console.log('factory ARRAY',factoryToTest.list);
