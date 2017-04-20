@@ -71,6 +71,8 @@ function DuckController($state, $stateParams, DuckFactory) {
   init();
 }
 
+DuckController.$inject = ['$state', '$stateParams', 'DuckFactory'];
+
 angular
   .module('DuckApp')
   .controller('DuckController', DuckController);

@@ -2,12 +2,15 @@ console.log('in ducks specController');
 describe('DuckController', () => {
 
   let controllerToTest;
+  let httpBackend;
 
   beforeEach(() => {
     module('DuckApp');
 
-    inject(($controller) => {
+    inject(($controller, $httpBackend) => {
       controllerToTest = $controller('DuckController');
+      httpBackend = $httpBackend;
+      console.log('httpBackend', httpBackend);
     });
   });
 
