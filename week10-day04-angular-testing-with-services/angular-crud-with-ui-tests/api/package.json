@@ -17,12 +17,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "angular-mocks": "^1.6.4",
-    "jasmine": "^2.5.3",
-    "karma": "^1.6.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-spec-reporter": "0.0.31",
     "nodemon": "^1.11.0"
   }
 }
