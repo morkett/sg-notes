@@ -1,3 +1,7 @@
+
+// xdescribe or xit - skips the tests
+// fdescribe or fit- only runs that test
+
 describe('TodosController', () => {
   // declare a var that can be used to create an instance of the controller for tests
   let controllerToTest;

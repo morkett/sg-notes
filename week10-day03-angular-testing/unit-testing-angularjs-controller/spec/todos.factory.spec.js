@@ -12,12 +12,20 @@ describe('TodosFactory', () => {
 
   describe('list-array', () => {
     it('should show list', () => {
+
       expect(factoryToTest.list).toEqual([]);
     });
   });
 
-  describe('add', () => {
-    it('should add new todo item to end of array', () => {
+  fdescribe('add()', () => {
+    it('should add new todo item to todo list', () => {
+      const newTodoItem = 'newTodoItem';
+      factoryToTest.add(newTodoItem);
+
+      expect(factoryToTest.list).toContain(newTodoItem);
+
+    });
+    it('should add new todo item to End of Array', () => {
       const newTodoItem = 'newTodoItem';
       factoryToTest.add(newTodoItem);
 
@@ -26,13 +34,11 @@ describe('TodosFactory', () => {
     });
   });
 
-  describe('clear', () => {
+  describe('clear()', () => {
     it('should clear all items from list array', () => {
-      factoryToTest.list.push('newTodo1, newTodo2');
-      // console.log(factoryToTest.list);
       factoryToTest.clear();
+
       expect(factoryToTest.list.length).toEqual(0);
-      // console.log('factory ARRAY',factoryToTest.list);
     });
   });
 
