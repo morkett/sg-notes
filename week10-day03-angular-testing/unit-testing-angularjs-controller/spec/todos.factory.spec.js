@@ -23,13 +23,14 @@ describe('TodosFactory', () => {
 
       expect(factoryToTest.list[factoryToTest.list.length -1]).toEqual(newTodoItem);
 
-      // console.log('after add',factoryToTest.list);
     });
   });
 
   describe('clear', () => {
     it('should clear all items from list array', () => {
       // console.log('factory ARRAY BEFORE', factoryToTest.list);
+      // factoryToTest.list = [];
+      // factoryToTest.list.splice(0);
       factoryToTest.clear();
       expect(factoryToTest.list.length).toEqual(0);
       // console.log('factory ARRAY',factoryToTest.list);
