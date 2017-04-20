@@ -54,7 +54,6 @@ function DuckController($state, $stateParams, DuckFactory) {
   };
 
   function init() {
-    console.log(controller);
     controller.selectedDuck = undefined;
     controller.allDucks = [];
     controller.newDuck = {};
